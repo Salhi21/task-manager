@@ -77,8 +77,7 @@ app.delete('/lists/:id', (req, res) => {
  * Purpose: Get all tasks in a specific list
  */
 app.get('/lists/:listId/tasks', (req, res) => {
-    // We want to return an array of all the lists that belong to the authenticated user 
-    List.find({
+    Task.find({
         _listId: req.params.listId
     }).then((tasks) => {
         res.send(tasks);
@@ -88,12 +87,11 @@ app.get('/lists/:listId/tasks', (req, res) => {
 })
 
 /**
- * POST /lists
- * Purpose: Create a list
+ * POST /lists/:listId/tasks
+ * Purpose: Create a new task in a specific list
  */
 app.post('/lists/:listId/tasks', (req, res) => {
-    // We want to create a new list and return the new list document back to the user (which includes the id)
-    // The list information (fields) will be passed in via the JSON request body
+    // We want to create a new task in a list specified by listId
     let task = new Task({
         title: req.body.title,
         _listId: req.params.listId
@@ -121,15 +119,15 @@ app.patch('/lists/:listId/tasks/:taskId', (req, res) => {
 });
 
 /**
- * DELETE /lists/:id
- * Purpose: Delete a list
+ * DELETE /lists/:listId/tasks/:taskId
+ * Purpose: Delete a task
  */
-app.delete('/lists/:id', (req, res) => {
-    // We want to delete the specified list (document with id in the URL)
+app.delete('/lists/:listId/tasks/:taskId', (req, res) => {
     List.findOneAndRemove({
         _id: req.params.id,
-    }).then((removedListDoc) => {
-        res.send(removedListDoc);
+        _listId: req.params.listId
+    }).then((removedTaskDoc) => {
+        res.send(removedTaskDoc);
     })
 });
 
