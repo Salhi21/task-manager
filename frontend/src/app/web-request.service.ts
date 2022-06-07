@@ -16,9 +16,11 @@ export class WebRequestService {
    post(uri : string, payload : Object){
     return this.http.get(`${this.ROOT_URL}/${uri}`,payload);
    }
-   patch(uri : string){
-    return this.http.get(`${this.ROOT_URL}/${uri}`);
+
+   patch(uri : string, payload : Object){
+    return this.http.get(`${this.ROOT_URL}/${uri}`,payload);
    }
+
    delete(uri : string){
     return this.http.get(`${this.ROOT_URL}/${uri}`);
    }
