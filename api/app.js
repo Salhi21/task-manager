@@ -99,7 +99,7 @@ app.get('/lists/:listId/tasks', (req, res) => {
  */
 app.post('/lists/:listId/tasks', (req, res) => {
     // We want to create a new task in a list specified by listId
-    let task = new Task({
+    let newTask = new Task({
         title: req.body.title,
         _listId: req.params.listId
     });
