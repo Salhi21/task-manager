@@ -26,6 +26,7 @@
 
 .tasks-list-container {
     display: flex;
+    position: relative;
     flex-direction: column;
     flex-grow: 1;
     padding: 24px;
@@ -45,6 +46,7 @@
     flex-direction: column;
     margin-top: 15px;
     flex-grow: 1;
+    overflow-y: auto;
     .list-menu-item {
         display: flex;
         align-items: center;
@@ -82,4 +84,13 @@
         text-decoration: line-through;
         opacity: 0.8;
     }
+}
+
+.circle-add-button {
+    height: 50px;
+    width: 50px;
+    bottom: 35px;
+    right: 35px;
+    border-radius: 50%;
+    position: absolute;
 }
