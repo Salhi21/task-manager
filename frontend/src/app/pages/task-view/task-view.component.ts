@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { List } from 'src/app/models/list.model';
 import { Task } from 'src/app/models/task.model';
 import { TaskService } from 'src/app/task.service';
+import * as Aos from 'aos';
 
 @Component({
   selector: 'app-task-view',
@@ -19,6 +20,7 @@ export class TaskViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    Aos.init();
     this.route.params.subscribe((params: Params) => {
       console.log(params);
       this.taskService.getTasks(params.listId).subscribe((tasks: Task[]) => {
