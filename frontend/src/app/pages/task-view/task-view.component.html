@@ -1,27 +1,38 @@
 <div class="centered-content" data-aos="zoom-in" data-aos-easing="ease">
     <div class="task-manager-container">
         <div class="sidebar has-background-white">
-            <h1 class="title has-text-primary" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease">Lists</h1>
+            <h1 class="title has-text-primary" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease">
+                Lists
+            </h1>
             <div class="list-menu">
-
                 <a class="list-menu-item" data-aos="fade-up" data-aos-delay="400" data-aos-easing="ease" *ngFor="let list of lists" [routerLink]="['/lists', list._id]" routerLinkActive="is-active">
-                    <p>{{list.title}}</p>
+                    <p>{{ list.title }}</p>
                 </a>
             </div>
-            <button class="button is-primary has-text-white" data-aos="zoom-in" data-aos-delay="400" data-aos-easing="ease" routerLink="/new-list">+ New List</button>
+            <button class="button is-primary has-text-white" data-aos="zoom-in" data-aos-delay="400" data-aos-easing="ease" routerLink="/new-list">
+        + New List
+      </button>
         </div>
         <div class="tasks-list-container has-background-light">
-            <h1 class="title has-text-primary" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease">Tasks</h1>
-            <!-- Task elements -->
-            <div class="task" *ngFor="let task of tasks" (click)="onTaskClick(task)" [ngClass]="{'completed' : task.completed }">
-                <p>{{task.title}}</p>
+            <div *ngIf="tasks">
+                <h1 class="title has-text-primary" data-aos="fade-right" data-aos-delay="200" data-aos-easing="ease">
+                    Tasks
+                </h1>
+                <!-- Task elements -->
+                <div class="task" *ngFor="let task of tasks" (click)="onTaskClick(task)" [ngClass]="{ completed: task.completed }">
+                    <p>{{ task.title }}</p>
+                </div>
+                <h1 class="empty-state-text is-4" *ngIf="tasks.length === 0">There are no tasks here</h1>
+
+
+            </div>
+            <div *ngIf="!tasks">
+                <h1 class="empty-state-text is-4">Please select a list from the side bar</h1>
             </div>
 
             <div class="circle-add-button button is-primary" data-aos="zoom-in" data-aos-delay="400" data-aos-easing="ease" routerLink="./new-task">
-                <img src="./../../../assets/plus-icon.svg" alt="">
+                <img src="./../../../assets/plus-icon.svg" alt="" />
             </div>
-
-
         </div>
     </div>
 </div>
