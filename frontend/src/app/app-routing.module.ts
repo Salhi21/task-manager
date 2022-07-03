@@ -9,7 +9,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { TaskViewComponent } from './pages/task-view/task-view.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/lists', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'new-list', component: NewListComponent },
   { path: 'edit-list/:listId', component: EditListComponent },
   { path: 'login', component: LoginPageComponent },
